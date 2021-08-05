@@ -16,19 +16,25 @@ const categoriesData = JSON.stringify(yaml.load(categoriesContent))
 
 const output = path.join(__dirname, 'metadata')
 
-    const files = [{
-        name: 'categories.json',
-        file: categoriesData,
-    },
-    {
-        name: 'icons.json',
-        file: iconsData
-    }];
+if (!fs.existsSync(output)) {
+    fs.mkdirSync(output)
+}
+
+const files = [{
+    name: 'categories.json',
+    file: categoriesData,
+},
+{
+    name: 'icons.json',
+    file: iconsData
+}];
 
 files.forEach( file => {
-    fs.writeFile(path.join(output, file.name), file.file, (err) => {
+    fs.writeFile(path.join(output, file.name), file.file, { flag: "wx" }, (err) => {
         if (!err) {
             console.log(file.name)
+        } else {
+            console.log(err)
         }
     })
 })

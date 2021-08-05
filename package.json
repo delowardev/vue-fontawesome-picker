@@ -1,9 +1,10 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "node ./meta.js && vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "generate": "node ./meta.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
