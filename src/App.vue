@@ -6,7 +6,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
-// import Categories from "../metadata.json"
+import Icons from "../metadata/icons.json"
+import store from "./store";
+import {saveIcons} from "./composition";
 
 export default defineComponent({
   name: 'App',
@@ -14,7 +16,8 @@ export default defineComponent({
     HelloWorld
   },
   setup() {
-    // console.log(Categories)
+    saveIcons(Icons)
+    console.log(store)
   }
 })
 </script>
