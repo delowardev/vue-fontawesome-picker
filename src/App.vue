@@ -1,14 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div class="icons">
+    <h1>Hello world</h1>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {computed, defineComponent} from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import Icons from "../metadata/icons.json"
 import store from "./store";
-import {saveIcons} from "./composition";
+import { saveIcons } from "./composition";
 
 export default defineComponent({
   name: 'App',
@@ -17,7 +18,11 @@ export default defineComponent({
   },
   setup() {
     saveIcons(Icons)
-    console.log(store)
+    const icons = computed(() => store.icons);
+
+    return {
+      icons
+    }
   }
 })
 </script>
