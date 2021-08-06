@@ -1,21 +1,13 @@
 import { reactive} from "vue";
+import type { Icon } from "./types"
 
-type IconStyle = 'brands' | 'regular' | 'solid';
-
-interface Icon {
-  changes: string[],
-  label: string;
-  search: {
-    terms: string[]
-  },
-  styles: IconStyle[],
-  voted: boolean
-}
+const value = <Array<Icon>>[]
 
 export default reactive({
   icons: {
-    brands: [] as Icon[],
-    regular: [] as Icon[],
-    solid: [] as Icon[]
-  }
+    brands: value,
+    regular: value,
+    solid: value,
+    all: value,
+  },
 })

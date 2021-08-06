@@ -1,14 +1,8 @@
 <template>
   <div class="icons">
-    <h1>Hello world</h1>
-
-
-
-    <div v-for="iconType in Object.keys(icons)" :key="iconType">
+    <div class="icon-type" v-for="iconType in Object.keys(icons)" :key="iconType">
       <Icon v-for="(icon, key) in icons[iconType]" :icon="icon" :style="iconType" :key="key" />
     </div>
-
-
   </div>
 </template>
 
@@ -16,6 +10,7 @@
 import {computed, defineComponent} from 'vue'
 import Icon from './Icon.vue'
 import Icons from "../metadata/icons.json"
+// import Categories from "../metadata/categories.json"
 import store from "./store";
 import { saveIcons } from "./composition";
 
@@ -25,7 +20,10 @@ export default defineComponent({
     Icon
   },
   setup() {
+    // console.log(Categories)
+    // console.log(Icons)
     saveIcons(Icons)
+
     const icons = computed(() => store.icons);
     return {
       icons
@@ -35,12 +33,16 @@ export default defineComponent({
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.icons .icon-type {
+  display: flex;
+  flex-wrap: wrap;
 }
+
+
+.icons .icon-type .icon {
+  flex-basis: 20px;
+  max-width: 20px;
+  padding: 10px;
+}
+
 </style>
