@@ -12,11 +12,9 @@ export default defineComponent({
   props: ["icon", "style"],
   setup(props) {
     const name = computed(() => props.icon.key)
-
     const svg = computed(() => {
-      return `../svgs/${props.style}/${name.value}.svg`;
+      return `../svgs/${props.icon.styles[0]}/${name.value}.svg`;
     })
-
     return {
       name,
       svg

@@ -5,8 +5,12 @@ export const saveIcons = (Icons: Icon[]) => {
   Object.keys(Icons).forEach((_icon: any) => {
     let icon: Icon = Icons[_icon] as Icon;
     const updatedIcon: Icon = Object.assign(icon, { key: _icon});
+    updatedIcon.keyword = updatedIcon.label + updatedIcon.search?.terms.join(" ")
+    delete updatedIcon.voted;
+    delete updatedIcon.changes;
+    delete updatedIcon.search;
     
-    if (! store.icons.all ) {
+    if ( ! Array.isArray(store.icons.all) ) {
       store.icons.all = []
     }
   

@@ -1,12 +1,13 @@
 export type IconStyle = 'brands' | 'regular' | 'solid';
 
 export interface Icon {
-  changes: string[],
+  changes?: string[],
   label: string;
-  search: {
+  search?: {
     terms: string[]
   },
   styles: IconStyle[],
-  voted: boolean;
+  voted?: boolean;
   key?: string;
+  keyword?: string;
 }

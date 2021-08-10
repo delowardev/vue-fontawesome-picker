@@ -1,8 +1,51 @@
 <template>
-  <div class="icons">
-    <div class="icon-type" v-for="iconType in Object.keys(icons)" :key="iconType">
-      <Icon v-for="(icon, key) in icons[iconType]" :icon="icon" :style="iconType" :key="key" />
+
+  <div class="vue-fontawesome-picker">
+    <div class="vue-fontawesome-input">
+      <input type="text">
+      <button>
+        <span class="fas fa-flag"></span>
+      </button>
     </div>
+    <div class="vue-fontawesome-popup">
+      <div class="vue-fontawesome-header">
+        <button>
+          <span class="far fa-flag"></span>
+          All
+        </button>
+        <button>
+          <span class="fas fa-smile"></span> Solid
+        </button>
+        <button>
+          <span class="far fa-smile"></span> Regular
+        </button>
+        <button>
+          <span class="fab fa-apple"></span> Brand
+        </button>
+      </div>
+      <div class="vue-fontawesome-search">
+        <input type="text" placeholder="Search icons">
+      </div>
+      <div class="vue-fontawesome-icons">
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="icons">
+<!--    <div class="icon-type" v-for="iconType in Object.keys(icons)" :key="iconType">-->
+<!--      <Icon v-for="(icon, key) in icons[iconType]" :icon="icon" :style="iconType" :key="key" />-->
+<!--    </div>-->
+<!--    -->
+
+<!--    <div class="icon-type">-->
+<!--      <Icon v-for="(icon, key) in icons['all']" :key="key" :icon="icon"></Icon>-->
+<!--    </div>-->
+
+    <span class="fab fa-facebook-f"></span>
+
+
+
   </div>
 </template>
 
@@ -22,9 +65,14 @@ export default defineComponent({
   setup() {
     // console.log(Categories)
     // console.log(Icons)
+    //@ts-ignore
     saveIcons(Icons)
 
     const icons = computed(() => store.icons);
+
+
+    console.log(icons.value)
+
     return {
       icons
     }
